@@ -4,11 +4,17 @@ CFLAGS = -O2 -g $(DEFFLAGS)
 LDFLAGS = -lm -lpthread
 GCC = gcc
 
-ALL = main
+ALL = popen gnuplot popen-read
 
 all: $(ALL)
 
-main: main.o sqr.o mult_acc.o
+popen: popen.o
+	$(GCC) -o $@  $^ $(LDFLAGS) 
+
+popen-read: popen-read.o
+	$(GCC) -o $@  $^ $(LDFLAGS) 
+
+gnuplot: gnuplot.o
 	$(GCC) -o $@  $^ $(LDFLAGS) 
 
 %.s: %.c

@@ -4,11 +4,14 @@ CFLAGS = -O2 -g $(DEFFLAGS)
 LDFLAGS = -lm -lpthread
 GCC = gcc
 
-ALL = main
+ALL = main proc2
 
 all: $(ALL)
 
-main: main.o sqr.o mult_acc.o
+main: proc.o
+	$(GCC) -o $@  $^ $(LDFLAGS) 
+
+proc2: proc2.o
 	$(GCC) -o $@  $^ $(LDFLAGS) 
 
 %.s: %.c
