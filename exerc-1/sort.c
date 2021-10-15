@@ -16,19 +16,21 @@ item_t array[] = {
 
 void sort(item_t * a, int n) {
   int i = 0, j = 0;
-  int s = 1;
+  int s = 2;
 
   for(; i < n && s != 0; i++) {
     s = 0;
-    for(j = 0; j < n-1; j++)
+    for(j = 0; j < n-1; j++){ //Esse for não havia chaves... 
+                              //isso fazia com que não houvesse as comparações necessárias // Estava faltando abrir chaves
       if(a[j].key > a[j+1].key) {
         item_t t = a[j];
         a[j] = a[j+1];
         a[j+1] = t;
         s++;
       }
-    n--;
-  }
+    //n--; Esse n diminui o número de comparações, ou seja.. cada iteração há menos comparações... o que não garante a ordenação correta
+    }
+  } // Estava faltando fechar chaves
 }
 
 int main(void) {
